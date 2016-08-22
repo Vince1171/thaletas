@@ -121,6 +121,9 @@ sources.music163 = function (terms, done) {
             try {
                 body = JSON.parse(body);
                 mp3 = body.songs[0].mp3Url;
+                if(!mp3){
+                    return done(new Error('No MP3 link found'));
+                }
             } catch (e) {
                 return done(new Error('No MP3 link found.'));
             }
